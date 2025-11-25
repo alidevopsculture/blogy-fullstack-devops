@@ -61,13 +61,13 @@ jobs:
           key: ${{ secrets.EC2_SSH_KEY }}
           script: |
             # removing the current container 
-            docker stop my-blog-backend || true
-            docker rm my-blog-backend || true
+            docker stop my-blog-c-frontend my-blog-c-backend || true
+            docker rm my-blog-c-frontend my-blog-c-backend || true
             docker stop my-blog-frontend || true
             docker rm my-blog-frontend || true
-            # removing the current images
-            docker rmi murtaza007/my-blog-backend || true
+            # Remove old images
             docker rmi murtaza007/my-blog-frontend || true
+            docker rmi murtaza007/my-blog-backend || true
             # pulling the new images
             docker pull murtaza007/my-blog-frontend
             docker pull murtaza007/my-blog-backend
